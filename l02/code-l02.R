@@ -9,7 +9,7 @@ x<-1:731 #изменяем диапазон иксов
 
 # Метод регрессии с использованием многочленов (???)
 #рисуем график
-plot(x[1:731],MyData$Td[1:731], type="l", xlab="номер измерени¤", ylab="значение параметра")
+plot(x[1:731],MyData$Td[1:731], type="l", xlab="номер измерения", ylab="значение параметра")
 #подбираем коэффициенты регрессионной модели
 res<-nls(y~a+b*x+c*x^2+d*x^3, data=e, start=list(a=0.1,b=0.1,c=0.1,d=0.1))
 #получаем значени¤ коэффициентов
@@ -28,7 +28,7 @@ library(caret) # библиотека, позволяющая использов
 mod1 <- train(y~x, data=e, method="knn")
 res1 <- predict(mod1, x[501:731])
 
-plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерени¤", ylab="значение параметра")
+plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерения", ylab="значение параметра")
 lines(x[1:500], res1[1:500], type="l", col="red")
 lines(x[501:731], res1[501:731], type="l", col="green")
 
@@ -40,7 +40,7 @@ install.packages("kernlab")
 mod2 <- train(y~x, data=e, method="svmPoly") #"svmLinear")
 res2 <- predict(mod2, x[501:731])
 
-plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерени¤", ylab="значение параметра")
+plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерения", ylab="значение параметра")
 lines(x[1:500], res2[1:500], type="l",col="red")
 lines(x[501:731], res2[501:731], type="l",col="green")
 
@@ -65,7 +65,7 @@ mod4 <- analyze.wavelet(e,my.series = 1,
                         make.pval = F, n.sim = 10)
 
 wt.image(mod4, n.levels = 337,
-         legend.params = list(lab="—тепень вли¤ни¤"))
+         legend.params = list(lab="степень влияния"))
 
 res4_1 <- reconstruct(mod4, sel.period = 3, show.legend = F)
 res4_2 <- reconstruct(mod4, sel.period = 6, show.legend = F)
@@ -76,7 +76,7 @@ res4_6 <- reconstruct(mod4, sel.period = 350, show.legend = F)
 res4_7 <- reconstruct(mod4, sel.period = 365, show.legend = F)
 res4_8 <- reconstruct(mod4, sel.period = 380, show.legend = F)
 
-plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерени¤", ylab="значение параметра")
+plot(x[1:731], MyData$Td[1:731], type="l", xlab="номер измерения", ylab="значение параметра")
 lines(x[1:500], res4_5$series$y.r[1:500], col="red",type="l")
 lines(x[1:500], res4_6$series$y.r[1:500], col="blue",type="l")
 lines(x[1:500], res4_7$series$y.r[1:500], col="green",type="l")
@@ -137,5 +137,5 @@ for(i in 1:values){
 s <- Sm2[,1]
 ss <- s[(endingIndex+1):(endingIndex+values)]
 
-plot(x[1:731],MyData$Td[1:731], type="l", xlab="номер измерени¤", ylab="значение параметра")
+plot(x[1:731],MyData$Td[1:731], type="l", xlab="номер измерения", ylab="значение параметра")
 lines(x[501:730], ss, col="green", type="l")
